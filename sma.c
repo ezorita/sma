@@ -121,7 +121,7 @@ sma_merge
       }
 
       // Complete copy.
-      if (k < dst_sz) 
+      if (k < dst_sz && k != l) 
          memmove(dst_lst + l, dst_lst+ k, (dst_sz - k)*sizeof(mismatch_t));
 
       // Save the final size.
@@ -187,7 +187,6 @@ sma_gen
 
    // Create a mask for the current nucleotide.
    unsigned char pos = 2*(params.slen - start - 1);
-   seq_t ntmask = 3 << pos;
 
    // Count.
    char base = (seq >> pos) & 3;

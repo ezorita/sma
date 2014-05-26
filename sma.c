@@ -1,13 +1,5 @@
 #include "sma.h"
 
-// TODO:
-// - Reuse suffixes to avoid recomputing all the suffix mismatches.
-// - Aixo es podria fer desant un index de l'ultima vegada que s'ha entrat cert nivell
-//   de start i quan s'hi torni a entrar tirar tantes seqs endarrera i copiar-les totes
-//   substituint nomes la part del prefix, sense haver de fer tota la computacio recursiva
-//   una altra vegada.
-
-
 void
 print_stack
 (
@@ -38,6 +30,7 @@ sma
    // Clear stack.
    mstack[tau]->pos = 0;
    if (tau == 0) {
+      mstack[tau]->seq = seq;
       add_mismatch(mstack, seq, 0);
       return;
    }
@@ -51,6 +44,7 @@ sma
       .extra = extra,
       .mstack = mstack + tau
    };
+   mstack[tau]->seq = seq;
    sma_gen(seq, 0, tau, 0, params, 0);
 
    // Sort.

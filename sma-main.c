@@ -78,7 +78,8 @@ int main(int argc, char *argv[])
       mstack[i]->seq = 0xFFFFFFFF;
    }
 
-   for (int i = 0; i <= tau; i++) sma(mstack, seq, slen, extra, i);
+   sma(mstack, seq, slen, extra, tau);
+   fprintf(stderr, "Number of seqs %d.\n", mstack[tau]->pos);
 
    return 0;
 }
